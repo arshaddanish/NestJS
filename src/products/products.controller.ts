@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Req,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
 
@@ -33,13 +34,13 @@ export class ProductsController {
   }
 
   @Patch(':id')
-  updateProduct(
-    @Param('id') id: string,
-    @Body('title') title: string,
-    @Body('desc') desc: string,
-    @Body('price') price: number,
-  ) {
-    return this.productsService.updateProduct(id, title, desc, price);
+  updateProduct(@Param('id') id: string, @Req() req) {
+    return this.productsService.updateProduct(id, req.body);
+  }
+
+  @Delete()
+  deleteProducts() {
+    return this.productsService.deleteProducts();
   }
 
   @Delete(':id')

@@ -1,8 +1,7 @@
-export class Product {
-  constructor(
-    public id: string,
-    public title: string,
-    public desc: string,
-    public price: number,
-  ) {}
-}
+import mongoose from 'mongoose';
+
+export const ProductSchema = new mongoose.Schema({
+  title: String,
+  desc: String,
+  price: Number,
+});
